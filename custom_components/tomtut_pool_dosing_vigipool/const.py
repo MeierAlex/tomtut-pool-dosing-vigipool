@@ -1,6 +1,6 @@
 """Constants for the Orpheo VP integration."""
 
-DOMAIN = "orpheo_vp"
+DOMAIN = "tomtut_pool_dosing_vigipool"
 
 # Cloud API (Fallback)
 BASE_URL = "https://supervision.vigipool.com"

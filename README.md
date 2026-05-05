@@ -1,4 +1,4 @@
-# TomTuT Orpheo VP
+# TomTuT Pool Dosing Vigipool
 
 Community Home Assistant integration for **Vigipool Orpheo VP** pool dosing systems (Phileo VP + Oxeo VP) via **local MQTT** (LAN), with optional cloud fallback.
 
@@ -20,7 +20,7 @@ Use at your own risk.
 - Sensors for **pH**, **Redox/ORP**, **flow**, **dosing pumps**, **daily/total injected volume**, **WiFi signal**, **firmware**, **errors**
 - Read/write entities for **setpoints** (pH, ORP), **container size**, **daily max dose**, **spa-mode**, **winter-mode**
 - **Restmenge tracking** (canister fill level) — auto-decrements based on injected volume, persists across restarts
-- Companion **custom Lovelace card** (`tomtut-orpheo-vp-card`) included in `lovelace/`
+- Companion **custom Lovelace card** available as a separate repository: [`tomtut-pool-dosing-vigipool-card`](https://github.com/TomTuTHub/tomtut-pool-dosing-vigipool-card)
 
 ---
 
@@ -42,14 +42,14 @@ The device must be on a network reachable from Home Assistant (typically your Io
 
 1. HACS → **Integrations**
 2. Menu (⋮) → **Custom repositories**
-3. Add repository URL: `https://github.com/TomTuTHub/tomtut-orpheo-vp`
+3. Add repository URL: `https://github.com/TomTuTHub/tomtut-pool-dosing-vigipool`
 4. Category: **Integration**
 5. Install → **Restart Home Assistant**
 
 ### Manual
 
-1. Copy `custom_components/orpheo_vp` to:
-   - `<config>/custom_components/orpheo_vp`
+1. Copy `custom_components/tomtut_pool_dosing_vigipool` to:
+   - `<config>/custom_components/tomtut_pool_dosing_vigipool`
 2. Restart Home Assistant
 
 ---
@@ -58,7 +58,7 @@ The device must be on a network reachable from Home Assistant (typically your Io
 
 1. Settings → **Devices & Services**
 2. **Add Integration**
-3. Search for **TomTuT Orpheo VP**
+3. Search for **TomTuT Pool Dosing Vigipool**
 4. Enter:
    - **IP address** of the device (the device itself is the MQTT broker)
    - **Phileo VP Device-ID** (12 hex chars — the WiFi MAC without separators, e.g. `08D1F9976534`)
@@ -76,12 +76,9 @@ The Device-IDs are the WiFi MAC addresses of the two internal modules (Phileo + 
 
 ## Companion Lovelace Card
 
-A custom card matching this integration is shipped under `lovelace/orpheo-vp-card.js`. After deploying it to `<config>/www/orpheo_vp/orpheo-vp-card.js` and registering it as a Lovelace resource, you can use:
+A custom Lovelace card that visualises this integration lives in its own repository:
 
-```yaml
-type: custom:orpheo-vp-card
-device_name: Orpheo VP Pool Dosieranlage
-```
+➡️ https://github.com/TomTuTHub/tomtut-pool-dosing-vigipool-card
 
 Features: live pump animations, animated water waves (gated by flow sensor), pH/Redox value badges, settings overlay (setpoints / container / refill / modes), dual plug toggles, cloud / firmware status badges.
 

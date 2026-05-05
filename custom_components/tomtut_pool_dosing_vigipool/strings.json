@@ -2,7 +2,7 @@
   "config": {
     "step": {
       "user": {
-        "title": "TomTuT Orpheo VP",
+        "title": "TomTuT Pool Dosing Vigipool",
         "description": "Name und IP-Adresse des Geraets (MQTT-Broker). Cloud-Fallback ist optional.",
         "data": {
           "name": "Name der Dosieranlage",
@@ -30,7 +30,7 @@
   "options": {
     "step": {
       "init": {
-        "title": "TomTuT Orpheo VP — Einstellungen",
+        "title": "TomTuT Pool Dosing Vigipool — Einstellungen",
         "description": "IP-Adresse, MQTT-Port, Device-IDs und Cloud-Fallback aendern.",
         "data": {
           "host": "IP-Adresse",
