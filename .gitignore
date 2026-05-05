@@ -8,6 +8,15 @@ CLAUDE.md
 agents/
 scripts/
 
+# Card lebt in eigenem Repo: tomtut-pool-dosing-vigipool-card
+lovelace/
+
+# Dashboards-YAML, Hintergrundbild und Hersteller-/interne Doku — nicht public
+dashboards/
+orpheo-dosieranlage-dashboard-bild.png
+docs/DEPLOY.md
+docs/vendor/
+
 # Python
 __pycache__/
 *.py[cod]
