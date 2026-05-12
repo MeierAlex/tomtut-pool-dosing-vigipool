@@ -1,19 +1,19 @@
 {
   "domain": "tomtut_pool_dosing_vigipool",
   "name": "TomTuT Pool Dosing Vigipool",
-  "version": "2.3.3",
+  "codeowners": [
+    "@TomTuTHub"
+  ],
   "config_flow": true,
+  "dependencies": [
+    "http"
+  ],
   "documentation": "https://github.com/TomTuTHub/tomtut-pool-dosing-vigipool",
+  "integration_type": "hub",
+  "iot_class": "local_push",
   "issue_tracker": "https://github.com/TomTuTHub/tomtut-pool-dosing-vigipool/issues",
   "requirements": [
     "paho-mqtt>=1.6.1"
   ],
-  "dependencies": [
-    "http"
-  ],
-  "codeowners": [
-    "@TomTuTHub"
-  ],
-  "integration_type": "hub",
-  "iot_class": "local_push"
+  "version": "2.3.4"
 }
