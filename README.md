@@ -1,8 +1,8 @@
 # TomTuT Pool Dosing Vigipool
 
-Community Home Assistant integration for **Vigipool Orpheo VP** pool dosing systems (Phileo VP + Oxeo VP) via **local MQTT** (LAN), with optional cloud fallback.
+Community Home Assistant integration for **Vigipool Orpheo VP** pool dosing systems (Phileo VP + Oxeo VP) via **local MQTT** (LAN). Local-only — no cloud account, no external server.
 
-➡️ **More info & guides (German):** https://www.tomtut.de/
+➡️ **More info & guides (German):** https://www.tomtut.de/vigipool
 
 ---
 
@@ -16,11 +16,12 @@ Use at your own risk.
 ## Features
 
 - **Local push via MQTT** — the device is its own broker on port 1883 (no external broker required, no auth needed)
-- **Cloud fallback** — falls back to `supervision.vigipool.com` when local MQTT is stale
-- Sensors for **pH**, **Redox/ORP**, **flow**, **dosing pumps**, **daily/total injected volume**, **WiFi signal**, **firmware**, **errors**
+- **Fully local** — no cloud login required; no traffic to `supervision.vigipool.com`. You can block the device from the internet entirely.
+- **Self-healing connection** — if the device goes offline (network outage, reboot, blocked at firewall), entities go `unavailable` within ~30 s; once the device returns, the integration reconnects automatically — no manual re-add.
+- Sensors for **pH**, **Redox/ORP**, **flow**, **dosing pumps**, **daily/total injected volume**, **WiFi signal**, **firmware**, **errors**, plus live status of the device's manufacturer-cloud uplink (`mqtt_connected`)
 - Read/write entities for **setpoints** (pH, ORP), **container size**, **daily max dose**, **spa-mode**, **winter-mode**
 - **Restmenge tracking** (canister fill level) — auto-decrements based on injected volume, persists across restarts
-- Companion **custom Lovelace card** available as a separate repository: [`tomtut-pool-dosing-vigipool-card`](https://github.com/TomTuTHub/tomtut-pool-dosing-vigipool-card)
+- Companion **custom Lovelace card** available as a separate repository: [`tomtut-pool-dosing-vigipool-card`](https://github.com/TomTuTHub/tomtut-pool-dosing-vigipool-card) — with prominent offline banner when the device drops off
 
 ---
 
@@ -63,7 +64,8 @@ The device must be on a network reachable from Home Assistant (typically your Io
    - **IP address** of the device (the device itself is the MQTT broker)
    - **Phileo VP Device-ID** (12 hex chars — the WiFi MAC without separators, e.g. `08D1F9976534`)
    - **Oxeo VP Device-ID** (12 hex chars)
-   - Optionally: Vigipool cloud credentials for fallback
+
+   No cloud credentials required — this integration is local-only.
 
 ### Finding the Device-IDs
 
@@ -127,7 +129,7 @@ Please open a **GitHub Issue** in this repository and include:
 - Device model (Vigipool Orpheo VP / CCEI / Poolsana)
 - Relevant logs (**Settings → System → Logs**)
 - Steps to reproduce (what you did, what you expected, what happened)
-- Did you watch the Blogarticle / YouTube video at https://tomtut.de/ ?
+- Did you watch the Blogarticle / YouTube video at https://www.tomtut.de/vigipool ?
 
 ---
 
