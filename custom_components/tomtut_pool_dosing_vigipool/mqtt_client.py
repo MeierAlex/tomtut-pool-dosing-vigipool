@@ -100,8 +100,20 @@ class OrpheoMqttClient:
         await self.hass.async_add_executor_job(self._disconnect)
 
     def _connect(self) -> None:
-        _LOGGER.info("Verbinde mit Orpheo-Broker %s:%s", self._host, self._port)
-        self._client.connect(self._host, self._port, keepalive=MQTT_KEEPALIVE)
+        """Non-blocking connect: paho's I/O-Thread versucht im Hintergrund
+        endlos zu connecten/reconnecten.
+
+        Wichtig: NICHT `connect()` benutzen — das ist synchron blockierend
+        und wirft bei offline Anlage eine Exception, was den Config-Entry-
+        Setup in `setup_error` schickt. Daraus kommt HA auch nach Reboot
+        nicht selbst raus; User müsste die Integration neu hinzufügen.
+        `connect_async()` setzt nur die Connection-Intention, `loop_start()`
+        läuft den I/O-Loop, der bei Connection-Loss automatisch retried.
+        Sobald die Anlage online ist, wird `_on_connect` gefeuert und die
+        Subscribes laufen wie gewohnt.
+        """
+        _LOGGER.info("Initialisiere MQTT-Loop fuer Orpheo-Broker %s:%s (non-blocking)", self._host, self._port)
+        self._client.connect_async(self._host, self._port, keepalive=MQTT_KEEPALIVE)
         self._client.loop_start()
 
     def _disconnect(self) -> None:

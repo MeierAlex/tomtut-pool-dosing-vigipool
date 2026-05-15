@@ -47,12 +47,15 @@ BINARY_SENSOR_DESCRIPTIONS: tuple[OrpheoBinarySensorEntityDescription, ...] = (
         data_key="ph_flow_on",
     ),
     OrpheoBinarySensorEntityDescription(
-        key="ph_server_on",
+        # Echter Live-Status der Hersteller-Cloud-Verbindung. `mqtt_connected`
+        # flippt auf 0, sobald die Anlage merkt, dass sie ihre Cloud nicht mehr
+        # erreicht; `server_on` (vorher genutzt) ist nur ein Modus-Flag.
+        key="ph_mqtt_connected",
         name="Cloud-Verbindung",
         icon="mdi:cloud-check",
         device_class=BinarySensorDeviceClass.CONNECTIVITY,
         entity_category=EntityCategory.DIAGNOSTIC,
-        data_key="ph_server_on",
+        data_key="ph_mqtt_connected",
     ),
 )
 

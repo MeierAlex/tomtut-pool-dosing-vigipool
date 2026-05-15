@@ -94,7 +94,8 @@ PHILEO_POINTS: dict[str, tuple[str, str, str | tuple[str, str], float | None, bo
     "ph_mode":            ("u8_r",  "mode_ph",               "info",     None,  False),
     "ph_spa_mode":        ("u8_w",  "spa_mode",              "info",     None,  True),
     "ph_winter_mode":     ("u8_w",  "winter_mode",           "info",     None,  True),
-    "ph_server_on":       ("u8_r",  "server_on",             "info",     None,  False),
+    # Echter Live-Status der Cloud-Verbindung der Anlage:
+    "ph_mqtt_connected":  ("u8_r",  "mqtt_connected",        "info",     None,  False),
     "ph_rssi":            ("i8_r",  "rssi",                  "info",     None,  False),
     "ph_error":           ("u32_r", "error",                 "info",     None,  False),
     "ph_state":           ("u32_r", "state",                 "info",     None,  False),
